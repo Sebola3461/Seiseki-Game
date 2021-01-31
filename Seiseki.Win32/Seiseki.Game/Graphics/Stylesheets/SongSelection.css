@@ -1,0 +1,142 @@
+* {
+    font-family: 'Comfortaa', cursive;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+ ::-webkit-scrollbar-track {
+    background: #1d233d;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: #bdd1fd;
+}
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #8f9ebe;
+}
+
+div#beatmap-info-wrapper {
+    position: absolute;
+    left: 2.5vw;
+    top: 10vh;
+    font-size: 25px;
+    color: rgb(189, 209, 253);
+}
+
+div#beatmap-info-background {
+    width: 25vw;
+    height: 20vh;
+    margin-top: 1.5vh;
+    background-color: rgb(34, 41, 82);
+    border-radius: 2.5px;
+    border: rgb(189, 209, 253) 3px solid;
+}
+
+div#leaderboard-modal {
+    position: absolute;
+    left: 2.5vw;
+    top: 42.5vh;
+    width: 25vw;
+    height: 45vh;
+    font-size: 25px;
+    color: rgb(189, 209, 253);
+}
+
+div#leaderboard-content {
+    width: 25vw;
+    height: 40vh;
+    margin-top: 1.5vh;
+    border-radius: 2.5px;
+    border: rgb(189, 209, 253) 3px solid;
+    background-color: rgb(34, 41, 82);
+}
+
+div#right-content-wraper {
+    position: absolute;
+    right: 0;
+    width: 70vw;
+    height: 80vh;
+    align-self: center;
+}
+
+div#beatmap-selectors-modal {
+    position: absolute;
+    right: 0;
+    top: 0vh;
+    width: 70vw;
+    height: 78.5vh;
+    align-self: center;
+}
+
+div#beatmap-selectors-modal-content {
+    position: absolute;
+    right: 1vw;
+    top: 5vh;
+    width: 50vw;
+    height: 75vh;
+    align-self: center;
+    overflow-y: scroll;
+    /*overflow-x: hidden;*/
+}
+
+
+/* 
+* Beatmap Selectors
+*/
+
+div.beatmap-selector {
+    display: flex;
+    flex-direction: column;
+    width: initial;
+    height: 10vh;
+    margin-bottom: 2vh;
+    margin-right: 1vw;
+    border-radius: 2.5px;
+    border: rgb(160, 177, 214) 3px solid;
+    background-color: rgb(34, 41, 82);
+}
+
+div.selector-thumbnail {
+    position: absolute;
+    padding: inherit;
+    width: 15vw;
+    height: inherit;
+    background: red;
+}
+
+div.selector-info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 33vw;
+    height: inherit;
+    padding-left: 2vw;
+}
+
+div.selector-info p {
+    font-size: 20px;
+    display: inline;
+    left: 1vw;
+}
+
+div.selector-info span {
+    font-size: 20px;
+    display: inline;
+    padding-right: 0.5vw;
+    padding-left: 0.5vw;
+    color: whitesmoke;
+}
+
+p.selector-title {
+    font-weight: 400;
+    color: white;
+}
+
+p.selector-artist {
+    font-weight: 300;
+    color: whitesmoke;
+}

@@ -1,0 +1,30 @@
+{
+    "name": "seiseki",
+    "version": "1.0.3",
+    "description": "A simple rhythm game",
+    "main": "./Seiseki.win32/Seiseki.Desktop/SetupWindow.js",
+    "scripts": {
+        "test": "electron ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Sebola3461/Seiseki.git"
+    },
+    "keywords": [
+        "game",
+        "rhythm",
+        "music",
+        "game"
+    ],
+    "author": "Paulo Ricardo Alves Campos",
+    "license": "MPL-2.0",
+    "bugs": {
+        "url": "https://github.com/Sebola3461/Seiseki/issues"
+    },
+    "homepage": "https://github.com/Sebola3461/Seiseki#readme",
+    "dependencies": {
+        "@foobar404/wave": "^1.2.7",
+        "electron": "^10.3.1",
+        "ini": "^2.0.0"
+    }
+}

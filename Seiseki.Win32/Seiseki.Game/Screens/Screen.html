@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="./../Window/changePage.js" defer async="false"></script>
+    <script src="./../Audio/playMusic.js" defer></script>
+    <script src="./../Graphics/Transitions/menuIntro.js" defer></script>
+    <script src="./../Audio/Utils/volumeDashboard.js" defer></script>
+    <script src="./../Audio/volumeManager.js" defer></script>
+    <script src="./../Graphics/Utils/volumeDashboard.js" defer></script>
+    <script src="./../Input/Keybinds/GlobalKeybinds.js" defer></script>
+    <script src="./../Audio/Utils/calcPlaybackTime.js" defer></script>
+    <link rel="stylesheet" href="./../Graphics/Stylesheets/index.css">
+</head>
+
+
+<body onload="changeToMainMenu();">
+    <div id="menu-sidebars-modal">
+        <div id="top-sidebar" class="sidebar">
+            <div class="top-sidebar-buttons-wrapper">
+                <button id="home-button" class="sidebar-button"></button>
+                <button id="nowplaying-options-button" class="sidebar-button" accesskey="2"></button>
+                <button id="configs-options-button" class="sidebar-button"></button>
+                <button id="beatmaps-options-button" class="sidebar-button"></button>
+            </div>
+        </div>
+        <div id="bottom-sidebar" class="sidebar"></div>
+    </div>
+    <div id="screen-content">
+    </div>
+    <div id="now-playing-panel-wrapper" style="left:-25vw;">
+        Now Playing
+        <div id="now-playing-panel-content">
+            <div id="now-playing-background"></div>
+            <div class="now-playing-panel-info-modal">
+                <p id="now-playing-title">Nothing to show here.</p>
+                <p id="now-playing-artist">Nothing to show here.</p>
+                <div id="np-panel-buttons-modal">
+                    <button id="np-last" class="np-panel-button" onclick="backTrack()"></button>
+                    <button id="np-pause" class="np-panel-button" act="pause"></button>
+                    <button id="np-next" class="np-panel-button" onclick="skipTrack()"></button>
+                    <div id="track-progress"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="volumeDashboardTitle" class="volume-dashboard-item">
+        <span class="volume-dashboard-item">Volume</span>
+        <div id="volumeDashboardContent" class="volume-dashboard-item">
+            <div id="volumeDashboardBarsLimiter">
+                <p>Music</p>
+                <div id="music_volume_bar" class="volume_bar"></div>
+                <p>Effects</p>
+                <div id="effect_volume_bar" class="volume_bar"></div>
+            </div>
+            <span id="music_volume">100%</span>
+            <span id="effect_volume">100%</span>
+        </div>
+    </div>
+    <div id="menu-fade-transition">
+    </div>
+    <audio id="music-track"></audio>
+    <audio id="effect-track"></audio>
+</body>
+
+</html>

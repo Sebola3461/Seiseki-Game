@@ -1,0 +1,306 @@
+/*
+* Copyright Sebola (c) 2021
+* See the licence.md file for more info
+*/
+
+
+/*
+! Trocar o import do google fonts para fontes locais
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+@import url('./../../Resources/fonts/font.css');
+@import url('./blink-effect.css');
+@import url('./audioPanel.css');
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    cursor: url("./../../Resources/svg/cursor.svg");
+    scroll-behavior: smooth;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+*:focus {
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+div#screen-content {
+    width: 100vw;
+    height: 100vh;
+}
+
+div#menu-fade-transition {
+    z-index: 99999;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
+
+div.transitionElement {
+    z-index: 99999;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
+
+body {
+    background-color: rgb(29, 35, 61);
+    overflow: hidden;
+}
+
+div#layout-modal {
+    display: flex;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+}
+
+div#menu-sidebars-modal {
+    display: flex;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+div#menu-sidebars-modal .sidebar {
+    width: 100vw;
+    height: 7vh;
+    background-color: rgb(34, 41, 82);
+}
+
+div#menu-sidebars-modal #top-sidebar {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-left: 100vw;
+    border-bottom: rgb(189, 209, 253) 3px solid;
+}
+
+div#menu-sidebars-modal #bottom-sidebar {
+    margin-left: -100vw;
+    border-top: rgb(189, 209, 253) 3px solid;
+}
+
+div#menu-game-title {
+    cursor: pointer;
+    display: flex;
+    color: rgb(189, 209, 253);
+    text-align: center;
+    align-items: center;
+    align-self: center;
+    flex-direction: column;
+}
+
+div#menu-game-title p {
+    z-index: 00001;
+    font-family: 'Comfortaa', cursive;
+    font-weight: 700;
+    color: rgb(189, 209, 253);
+    font-size: 0px;
+    line-height: 28vh;
+}
+
+div#menu-game-title span {
+    font-family: 'Comfortaa', cursive;
+    font-weight: 500;
+    color: rgb(172, 184, 207);
+    font-size: 25px;
+    opacity: 0;
+    animation-name: blink;
+    animation-iteration-count: infinite;
+    animation-duration: 800ms;
+    animation-delay: 3000ms;
+}
+
+button.sidebar-button {
+    z-index: 10;
+    height: 3.5vh;
+    width: 2vw;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    transition: linear 200ms;
+}
+
+button.sidebar-button:hover {
+    filter: brightness(150%);
+}
+
+div.top-sidebar-buttons-wrapper {
+    position: absolute;
+    display: flex;
+    width: 25vw;
+    height: 7vh;
+    justify-content: space-around;
+    align-items: center;
+}
+
+button#home-button {
+    background-image: url('./../../Resources/svg/home.svg');
+}
+
+button#configs-options-button {
+    background-image: url('./../../Resources/svg/configs.svg');
+}
+
+button#beatmaps-options-button {
+    background-image: url('./../../Resources/svg/beatmap-download.svg');
+}
+
+button#nowplaying-options-button {
+    background-image: url('./../../Resources/svg/music.svg');
+}
+
+div.transitionElement {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 100vh;
+    color: rgb(172, 184, 207);
+    font-size: 20px;
+    font-family: 'Comfortaa', cursive;
+    text-align: bottom;
+    padding-left: 90vw;
+    padding-top: 95vh;
+    user-select: none;
+}
+
+div.transitionElement#transitionOverlay1 {
+    background-color: rgb(52, 63, 107);
+}
+
+div.transitionElement#transitionOverlay2 {
+    background-color: rgb(34, 41, 82);
+}
+
+canvas#audio-bars-visualizer {
+    z-index: -999;
+    position: absolute;
+    bottom: calc(7vh + 3px);
+    width: 100vw;
+    height: calc(100vh / 5);
+}
+
+div#now-playing-panel-wrapper {
+    z-index: 99999;
+    font-family: 'Comfortaa', cursive;
+    position: absolute;
+    width: 23vw;
+    height: 25vh;
+    top: 10vh;
+    font-weight: 400;
+    font-size: 18px;
+    color: rgb(189, 209, 253);
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 400ms;
+}
+
+div#now-playing-panel-content {
+    border-radius: 2.5px;
+    border: rgb(189, 209, 253) 3px solid;
+}
+
+div#now-playing-panel-wrapper #now-playing-background {
+    width: initial;
+    height: 10vh;
+    background-position: center;
+    background-size: cover;
+    background-origin: content-box;
+    background-clip: content-box;
+    background-color: rgb(34, 41, 82);
+}
+
+div#now-playing-panel-wrapper .now-playing-panel-info-modal {
+    width: initial;
+    height: 10vh;
+    background-color: rgb(34, 41, 82);
+}
+
+div#now-playing-panel-wrapper p#now-playing-title {
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+    margin-left: 15pt;
+    padding-top: 10pt;
+    line-height: 20pt;
+}
+
+div#now-playing-panel-wrapper p#now-playing-artist {
+    color: whitesmoke;
+    font-size: 15px;
+    font-weight: 200;
+    margin-left: 15pt;
+}
+
+div#np-panel-buttons-modal {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 8vw;
+    height: 6vh;
+    left: calc(14.5vw - 3px);
+    top: 16vh;
+}
+
+button.np-panel-button {
+    z-index: 1;
+    width: 2vw;
+    height: 4vh;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    transition: linear 200ms;
+}
+
+button.np-panel-button:hover {
+    filter: brightness(150%);
+}
+
+button.np-panel-button:active {
+    background-size: 80%;
+}
+
+button#np-last {
+    background-image: url('./../../Resources/svg/audio-last.svg');
+}
+
+button#np-pause {
+    background-image: url('./../../Resources/svg/audio-pause.svg');
+}
+
+button#np-next {
+    background-image: url('./../../Resources/svg/audio-skip.svg');
+}
+
+div#track-progress {
+    position: absolute;
+    display: flex;
+    width: 0%;
+    height: 1vh;
+    bottom: 0;
+    left: 0;
+    align-self: flex-start;
+    background-color: rgb(189, 209, 253);
+    border-radius: 2.5px;
+    transition: linear 250ms;
+}

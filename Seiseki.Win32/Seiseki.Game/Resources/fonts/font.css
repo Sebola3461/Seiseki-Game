@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'comfortaa', cursive;
+    font-weight: normal;
+    src: url('./Comfortaa-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'comfortaa', cursive;
+    font-weight: bold;
+    src: url('./Comfortaa-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'comfortaa', cursive;
+    font-weight: lighter;
+    src: url('./Comfortaa-Light.ttf');
+}
