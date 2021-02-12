@@ -3,7 +3,7 @@
  * See the licence.md file for more info
  */
 
-module.exports = function() {
+module.exports = async function() {
     const overlay1 = document.createElement("div")
     const overlay2 = document.createElement("div")
     overlay1.id = "transitionOverlay1"
@@ -31,8 +31,6 @@ module.exports = function() {
 
         // * Change the background color to black
         setTimeout(function() {
-            overlay2.style.backgroundColor = "#000"
-
             // * Add the "Loading" text on the black overlay
             setTimeout(function() {
                 overlay2.innerHTML = "Loading"

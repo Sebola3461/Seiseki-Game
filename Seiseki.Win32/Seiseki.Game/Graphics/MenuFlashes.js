@@ -1,18 +1,23 @@
-const audioIllustrator = require("audio-illustrator")
+function initializeMenuFlashesListener() {
+    const { parse } = require('ini')
+    const { readFileSync } = require('fs')
+    const currentMusicData = parse(readFileSync(music.getAttribute("music-data-archive"), "utf-8"));
+    const musicBpmPointsValue = currentMusicData.timming.bpmPointsValue.split(',')
+    const musicbpmPointsOffset = currentMusicData.timming.bpmPointsOffset.split(',')
 
-function startListener() {
-
-    const illustrator = new audioIllustrator.default()
-    navigator.mediaDevices.getUserMedia({
-        audio: true
-    }).then(function(stream) {
-        illustrator.connect(stream.getAudioTracks()[0])
-    })
-    const startListenerLoop = () => {
-        illustrator.startLoop(startListenerLoop)
-        const audioData = illustrator.getData(1)
-        console.log(audioData)
+    function checkIfSpecialTime() {
+        for (let index = 0; index < currentMusicData.timming.specialTimesStarts.split(',').length; index++) {
+            if (music.currentTime.toString().includes(currentMusicData.timming.specialTimesStarts.split(',')[index])) {
+                startSpecialTimeEffects()
+            }
+        }
     }
+
+    setInterval(checkIfSpecialTime, 100)
 }
 
-module.exports.startListener = startListener;
+function startSpecialTimeEffects() {
+
+}
+
+module.exports.initializeMenuFlashesListener = initializeMenuFlashesListener;

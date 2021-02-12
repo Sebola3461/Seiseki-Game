@@ -1,13 +1,14 @@
 * {
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Quicksand', sans-serif;
 }
 
 ::-webkit-scrollbar {
+    display: none;
     width: 10px;
 }
 
  ::-webkit-scrollbar-track {
-    background: #1d233d;
+    background: #1d233d00;
 }
 
  ::-webkit-scrollbar-thumb {
@@ -23,16 +24,16 @@ div#beatmap-info-wrapper {
     left: 2.5vw;
     top: 10vh;
     font-size: 25px;
-    color: rgb(189, 209, 253);
+    color: #fcfcfb;
 }
 
 div#beatmap-info-background {
     width: 25vw;
     height: 20vh;
     margin-top: 1.5vh;
-    background-color: rgb(34, 41, 82);
-    border-radius: 2.5px;
-    border: rgb(189, 209, 253) 3px solid;
+    background-color: #2d313c;
+    border-radius: 1px;
+    border: #5fd6c3 1px solid;
 }
 
 div#leaderboard-modal {
@@ -42,16 +43,16 @@ div#leaderboard-modal {
     width: 25vw;
     height: 45vh;
     font-size: 25px;
-    color: rgb(189, 209, 253);
+    color: #fcfcfb;
 }
 
 div#leaderboard-content {
     width: 25vw;
     height: 40vh;
     margin-top: 1.5vh;
-    border-radius: 2.5px;
-    border: rgb(189, 209, 253) 3px solid;
-    background-color: rgb(34, 41, 82);
+    border-radius: 1px;
+    border: #5fd6c3 1px solid;
+    background-color: #2d313c;
 }
 
 div#right-content-wraper {
@@ -65,21 +66,35 @@ div#right-content-wraper {
 div#beatmap-selectors-modal {
     position: absolute;
     right: 0;
-    top: 0vh;
-    width: 70vw;
-    height: 78.5vh;
+    top: 6vh;
+    width: 52vw;
+    height: 75.8vh;
     align-self: center;
+    overflow-y: scroll;
+    direction: rtl;
 }
 
 div#beatmap-selectors-modal-content {
     position: absolute;
-    right: 1vw;
-    top: 5vh;
     width: 50vw;
-    height: 75vh;
-    align-self: center;
-    overflow-y: scroll;
-    /*overflow-x: hidden;*/
+    height: max-content;
+    align-self: right;
+}
+
+
+/*
+* Keyframes
+*/
+
+@keyframes easeInSelectors {
+    0% {
+        margin-top: -10vh;
+        opacity: 0;
+    }
+    100% {
+        margin-top: 1vh;
+        opacity: 1;
+    }
 }
 
 
@@ -87,56 +102,130 @@ div#beatmap-selectors-modal-content {
 * Beatmap Selectors
 */
 
+div.big-selector {
+    z-index: 999;
+    display: flex;
+    width: 45vw;
+    height: 10vh;
+    align-content: flex-end;
+    cursor: pointer;
+    border: #5fd6c3 1px solid;
+    background-color: #2d313c;
+    margin-top: 1vh;
+    animation-name: easeInSelectors;
+    animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.5);
+    animation-duration: 1200ms;
+    transition: cubic-bezier(0, 1.12, 0.51, 0.98) 5000ms;
+    direction: ltr;
+}
+
+div.big-selector:hover {
+    margin-top: 2.5vh;
+    margin-bottom: 2.5vh;
+    width: 50vw;
+}
+
 div.beatmap-selector {
     display: flex;
     flex-direction: column;
     width: initial;
     height: 10vh;
-    margin-bottom: 2vh;
-    margin-right: 1vw;
-    border-radius: 2.5px;
-    border: rgb(160, 177, 214) 3px solid;
-    background-color: rgb(34, 41, 82);
+    margin-bottom: 4vh;
+    border-radius: 1px;
 }
 
 div.selector-thumbnail {
     position: absolute;
     padding: inherit;
-    width: 15vw;
-    height: inherit;
-    background: red;
+    width: 12vw;
+    height: 10vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-div.selector-info {
+div.diff-thumbnail {
+    position: absolute;
+    padding: inherit;
+    width: 12vw;
+    height: 10vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+div.selector-song-info {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
-    justify-content: space-evenly;
-    width: 33vw;
-    height: inherit;
-    padding-left: 2vw;
+    justify-content: center;
+    width: fit-content;
+    height: 10vh;
+    padding-left: 13vw;
 }
 
-div.selector-info p {
-    font-size: 20px;
-    display: inline;
-    left: 1vw;
-}
-
-div.selector-info span {
-    font-size: 20px;
-    display: inline;
-    padding-right: 0.5vw;
-    padding-left: 0.5vw;
+p.selector-artist {
+    font-size: 18px;
+    font-weight: 200;
     color: whitesmoke;
 }
 
 p.selector-title {
+    font-size: 20px;
     font-weight: 400;
     color: white;
 }
 
-p.selector-artist {
-    font-weight: 300;
+div.selector-diff-info {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+    height: 10vh;
+    padding-left: 13vw;
+}
+
+p.diff-title {
+    font-size: 20px;
+    font-weight: 400;
+    color: white;
+}
+
+p.diff-mapper {
+    font-size: 18px;
+    font-weight: 200;
     color: whitesmoke;
+}
+
+div.diff-selector-modal {
+    position: relative;
+    margin-top: 1vh;
+    width: 50vw;
+    height: max-content;
+    direction: rtl;
+}
+
+div.beatmap-diff-selector {
+    width: 31vw;
+    height: 10vh;
+    margin-bottom: 1vh;
+    border-radius: 1px;
+    border: #5fd6c3 1px solid;
+    background-color: #2d313c;
+    cursor: pointer;
+    animation-name: easeInSelectors;
+    animation-timing-function: cubic-bezier(0.32, 0.31, 0.5, 1.47);
+    animation-duration: 800ms;
+    transition: cubic-bezier(0.4, 0, 0.2, 1) 500ms;
+    direction: ltr;
+}
+
+div.beatmap-diff-selector:hover {
+    z-index: 999;
+    filter: brightness(110%);
+    margin-top: -2vh;
+    margin-bottom: -1vh;
+    width: 35vw;
+    box-shadow: 0px 0px 14px 2px rgb(95, 214, 195, 14%);
 }

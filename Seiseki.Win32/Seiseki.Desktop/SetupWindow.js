@@ -13,6 +13,8 @@ function launch(resolutionW, resolutionH, fullscreen) {
         fullscreen: fullscreen,
         backgroundColor: 'rgb(0,0,0)',
         frameless: true,
+        show: false,
+        opacity: 0.0,
         //autoHideMenuBar: true,
         webPreferences: {
             scrollBounce: true,
@@ -30,6 +32,14 @@ function launch(resolutionW, resolutionH, fullscreen) {
         // * Show error message if error
         dialog.showErrorBox("Oh no!", `An error has occurred:\n${e}`)
     })
+
+    win.on("ready-to-show", () => {
+        win.show();
+        setInterval(function() {
+            win.setOpacity(win.getOpacity() + 0.1)
+        }, 50)
+    })
+
 }
 
 // * Disable for best input response

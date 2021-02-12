@@ -14,6 +14,7 @@ function startQueue() {
     audio.play()
     currentTrack = 0;
     setNowPlayingInfo()
+    npBarUpdate()
 
     try {
         audioVisualizers.startDrawing()
@@ -61,6 +62,7 @@ function updateNpData() {
     const all_beatmaps = readdirSync(beatmapsFolder, "utf-8")
 
     audio.setAttribute("index", currentTrack)
+    audio.setAttribute("music-data-archive", `${beatmapsFolder}/${all_beatmaps[currentTrack]}/data.ini`, "utf-8")
     audio.setAttribute("music-title", ini.parse(readFileSync(`${beatmapsFolder}/${all_beatmaps[currentTrack]}/data.ini`, "utf-8")).data.title)
     audio.setAttribute("music-artist", ini.parse(readFileSync(`${beatmapsFolder}/${all_beatmaps[currentTrack]}/data.ini`, "utf-8")).data.artist)
     audio.setAttribute("thumbnail", `${beatmapsFolder}/${all_beatmaps[currentTrack]}/` + ini.parse(readFileSync(`${beatmapsFolder}/${all_beatmaps[currentTrack]}/data.ini`, "utf-8")).data.thumbnail)
@@ -74,6 +76,7 @@ function startAutoQueue() {
 
     currentTrack = 0;
     audio.setAttribute("index", currentTrack)
+    audio.setAttribute("music-data-archive", `${beatmapsFolder}/${all_beatmaps[0]}/data.ini`, "utf-8")
     audio.setAttribute("music-title", ini.parse(readFileSync(`${beatmapsFolder}/${all_beatmaps[0]}/data.ini`, "utf-8")).data.title)
     audio.setAttribute("music-artist", ini.parse(readFileSync(`${beatmapsFolder}/${all_beatmaps[0]}/data.ini`, "utf-8")).data.artist)
     audio.setAttribute("thumbnail", `${beatmapsFolder}/${all_beatmaps[0]}/` + ini.parse(readFileSync(`${beatmapsFolder}/${all_beatmaps[0]}/data.ini`, "utf-8")).data.thumbnail)

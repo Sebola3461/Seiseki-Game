@@ -18,13 +18,13 @@
     <div id="menu-sidebars-modal">
         <div id="top-sidebar" class="sidebar">
             <div class="top-sidebar-buttons-wrapper">
-                <button id="home-button" class="sidebar-button"></button>
+                <button id="home-button" class="sidebar-button" onclick="changeToMainMenu()"></button>
                 <button id="nowplaying-options-button" class="sidebar-button" accesskey="2"></button>
                 <button id="configs-options-button" class="sidebar-button"></button>
                 <button id="beatmaps-options-button" class="sidebar-button"></button>
             </div>
         </div>
-        <div id="bottom-sidebar" class="sidebar"></div>
+        <div id="bottom-sidebar" class="sidebar"><div id="alpha-watermark">Seiseki Closed Alpha v1.0</div></div>
     </div>
     <div id="screen-content">
     </div>
@@ -44,18 +44,17 @@
             </div>
         </div>
     </div>
-    <div id="volumeDashboardTitle" class="volume-dashboard-item">
-        <span class="volume-dashboard-item">Volume</span>
-        <div id="volumeDashboardContent" class="volume-dashboard-item">
-            <div id="volumeDashboardBarsLimiter">
-                <p>Music</p>
-                <div id="music_volume_bar" class="volume_bar"></div>
-                <p>Effects</p>
-                <div id="effect_volume_bar" class="volume_bar"></div>
-            </div>
-            <span id="music_volume">100%</span>
-            <span id="effect_volume">100%</span>
+    <div id="volumeDashboardContent" class="volume-dashboard-item">
+        <p class="volume-dashboard-item volume-dashboard-title">Volume</p>
+        <div id="volumeDashboardBarsLimiter">
+            <p>Music</p>
+            <div id="music_volume_bar" class="volume_bar"></div>
+            <p>Effects</p>
+            <div id="effect_volume_bar" class="volume_bar"></div>
         </div>
+        <span id="music_volume">100%</span>
+        <span id="effect_volume">100%</span>
+    </div>
     </div>
     <div id="menu-fade-transition">
     </div>

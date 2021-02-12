@@ -6,9 +6,9 @@ function startDrawing() {
     const Wave = require("@foobar404/wave")
     let wave = new Wave();
     wave.fromElement("music-track", "audio-bars-visualizer", {
-        stroke: 3,
+        stroke: 1,
         type: "bars",
-        colors: ["rgb(172, 184, 207)"]
+        colors: ["#5fd6c3"]
     });
 }
 

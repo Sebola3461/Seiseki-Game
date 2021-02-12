@@ -3,15 +3,15 @@ div#volumeDashboardTitle {
     z-index: 9999999;
     width: 20vw;
     height: 24vh;
-    right: -50vw;
-    bottom: 14vh;
-    font-family: 'Comfortaa', cursive;
     font-weight: 400;
     font-size: 18px;
-    color: rgb(189, 209, 253);
 }
 
 div#volumeDashboardContent {
+    right: -50vw;
+    bottom: 14vh;
+    font-family: 'Quicksand', sans-serif;
+    color: #fcfcfb;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,9 +19,9 @@ div#volumeDashboardContent {
     z-index: 99999;
     width: 20vw;
     height: 20vh;
-    background-color: rgb(34, 41, 82);
-    border: rgb(189, 209, 253) 3px solid;
-    border-radius: 5px;
+    background-color: #2d313c;
+    border: #5fd6c3 1px solid;
+    border-radius: 1px;
     justify-content: space-evenly;
 }
 
@@ -39,6 +39,11 @@ div#volumeDashboardContent span {
     font-size: 11px;
 }
 
+div#volumeDashboardContent .volume-dashboard-title {
+    align-self: center;
+    margin: 0;
+}
+
 .volume-dashboard-item {
     transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 400ms;
 }
@@ -47,7 +52,7 @@ div#volumeDashboardBarsLimiter {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute;
+    position: relative;
     height: 20vh;
     width: 15vw;
 }
@@ -58,7 +63,7 @@ div.volume_bar {
     height: 3vh;
     max-width: 15vw;
     max-height: 3vh;
-    background-color: #bdd1fd;
-    border-radius: 2.5px;
+    background-color: #5fd6c3;
+    border-radius: 1px;
     transition: linear 150ms;
 }

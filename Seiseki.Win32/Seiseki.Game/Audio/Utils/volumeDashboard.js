@@ -1,4 +1,4 @@
-const dashboard = document.getElementById("volumeDashboardTitle");
+const dashboard = document.getElementById("volumeDashboardContent");
 
 function showAudioDashboard() {
     dashboard.style.right = "2vw";
