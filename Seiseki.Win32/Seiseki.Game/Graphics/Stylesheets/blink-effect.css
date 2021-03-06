@@ -1,11 +1,20 @@
 @keyframes blink {
-    0% {
-        opacity: 1;
-    }
     50% {
         opacity: 0;
     }
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes flash {
+    0% {
+        box-shadow: 0 0 14px 2px rgba(95, 214, 195, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px 11px rgba(95, 214, 195, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 15px 0px rgba(95, 214, 195, 0.5);
     }
 }

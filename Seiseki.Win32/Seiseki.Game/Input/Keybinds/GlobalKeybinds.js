@@ -3,7 +3,6 @@ const volumeManager = require("./../Audio/volumeManager.js")
 
 // * Make a keybind manager for menu
 document.addEventListener("keydown", key => {
-    console.log(key.key)
 
     // * Music volume up keybind
     if (key.altKey && key.key == "ArrowUp") {

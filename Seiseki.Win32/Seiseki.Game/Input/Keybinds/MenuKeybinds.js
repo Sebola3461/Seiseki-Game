@@ -1,5 +1,3 @@
-const menu_play = document.getElementById("menu-game-title")
-
 document.addEventListener("keydown", key => {
     if (key.altKey && key.key == "w") {
         rapidShow()
@@ -15,8 +13,4 @@ document.addEventListener("keydown", key => {
         rapidShow()
         np_next.click()
     }
-})
-
-menu_play.addEventListener("click", () => {
-    changeToSongSelection()
 })

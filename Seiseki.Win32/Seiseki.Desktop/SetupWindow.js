@@ -4,6 +4,7 @@
  */
 
 const { BrowserWindow, app, dialog } = require('electron')
+const {optimizeMinimizedWindow} = require("./../Seiseki.Game/Window/setupElements")
 
 function launch(resolutionW, resolutionH, fullscreen) {
     const win = new BrowserWindow({
@@ -15,7 +16,7 @@ function launch(resolutionW, resolutionH, fullscreen) {
         frameless: true,
         show: false,
         opacity: 0.0,
-        //autoHideMenuBar: true,
+        autoHideMenuBar: true,
         webPreferences: {
             scrollBounce: true,
             nodeIntegration: true
@@ -25,7 +26,7 @@ function launch(resolutionW, resolutionH, fullscreen) {
     win.webContents.frameRate = 240;
 
     // * Load the main file and launch the window
-    win.loadFile(__dirname + "/../Seiseki.Game/Screens/Screen.html").then(() => {
+    win.loadFile(__dirname + "/../Seiseki.Game/Screens/Tests/test.html").then(() => {
         console.log(`${Date().slice(0,21)} - [Window Manager] Loaded the file MainMenu.html`);
     }).catch((e) => {
 
@@ -34,8 +35,16 @@ function launch(resolutionW, resolutionH, fullscreen) {
     })
 
     win.on("ready-to-show", () => {
+        win.on("maximize", () => {
+            win.focus()
+        })
+        let closed = false;
         win.show();
+        win.focus();
+        app.on("will-quit", () => { closed = true; })
         setInterval(function() {
+            if (closed == true) return app.quit()
+            if (win.getOpacity() == 1) return;
             win.setOpacity(win.getOpacity() + 0.1)
         }, 50)
     })
@@ -44,9 +53,10 @@ function launch(resolutionW, resolutionH, fullscreen) {
 
 // * Disable for best input response
 app.disableHardwareAcceleration()
+app.setMaxListeners(100)
 
 // * Show error message if error
-app.on("renderer-process-crashed" || "gpu-process-crashed", err => {
+app.on("renderer-process-crashed" | "gpu-process-crashed" | "abort", err => {
     dialog.showMessageBox("Cyberpunk 2077", `Seiseki crashed:\n${err}`).then(res => {
         if (res.response != 0) app.quit()
     })

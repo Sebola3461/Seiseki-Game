@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <script src="./../Window/changePage.js" defer async="false"></script>
+    <script src="./../Window/changePage.js" defer></script>
     <script src="./../Audio/playMusic.js" defer></script>
     <script src="./../Graphics/Transitions/menuIntro.js" defer></script>
     <script src="./../Audio/Utils/volumeDashboard.js" defer></script>
@@ -10,11 +10,21 @@
     <script src="./../Graphics/Utils/volumeDashboard.js" defer></script>
     <script src="./../Input/Keybinds/GlobalKeybinds.js" defer></script>
     <script src="./../Audio/Utils/calcPlaybackTime.js" defer></script>
+    <script src="./../Window/setupElements.js" defer></script>
+    <script src="./../Input/ButtonsManager/GlobalButtons.js" defer></script>
+    <script src="./../Graphics/SyncMenu.js" defer></script>
+    <script src="./../Audio/effectsPlayer.js"></script>
+    <script src="./../Audio/Utils/setupEffects.js" defer></script>
     <link rel="stylesheet" href="./../Graphics/Stylesheets/index.css">
 </head>
 
 
-<body onload="changeToMainMenu();">
+<body onload="setupElement()">
+    <div id="work-in-progress-modal">
+        <p id="warn-title">Warning</p>
+        <p id="work-in-progress-title">This project is under development</p>
+        <p id="work-in-progress-warn">This beta does not represent the final quality of the product</p>
+    </div>
     <div id="menu-sidebars-modal">
         <div id="top-sidebar" class="sidebar">
             <div class="top-sidebar-buttons-wrapper">
@@ -24,7 +34,7 @@
                 <button id="beatmaps-options-button" class="sidebar-button"></button>
             </div>
         </div>
-        <div id="bottom-sidebar" class="sidebar"><div id="alpha-watermark">Seiseki Closed Alpha v1.0</div></div>
+        <div id="bottom-sidebar" class="sidebar"><div id="alpha-watermark"><script>document.getElementById("alpha-watermark").innerText = "Seiseki Closed Alpha v"+JSON.parse(require("fs").readFileSync(__dirname+"/../../../package.json", "utf-8")).version</script></div></div>
     </div>
     <div id="screen-content">
     </div>
@@ -58,6 +68,7 @@
     </div>
     <div id="menu-fade-transition">
     </div>
+    <canvas id="audio-bars-visualizer"></canvas>
     <audio id="music-track"></audio>
     <audio id="effect-track"></audio>
 </body>

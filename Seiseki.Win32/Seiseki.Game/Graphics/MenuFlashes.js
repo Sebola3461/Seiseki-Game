@@ -1,4 +1,4 @@
-function initializeMenuFlashesListener() {
+function initializeMenuEffectsManager() {
     const { parse } = require('ini')
     const { readFileSync } = require('fs')
     const currentMusicData = parse(readFileSync(music.getAttribute("music-data-archive"), "utf-8"));
@@ -20,4 +20,4 @@ function startSpecialTimeEffects() {
 
 }
 
-module.exports.initializeMenuFlashesListener = initializeMenuFlashesListener;
+module.exports.initializeMenuEffectsManager = initializeMenuEffectsManager;

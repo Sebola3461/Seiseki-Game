@@ -1,6 +1,6 @@
 {
     "name": "seiseki",
-    "version": "1.0.3",
+    "version": "2021.1.4",
     "description": "A simple rhythm game",
     "main": "./Seiseki.win32/Seiseki.Desktop/SetupWindow.js",
     "scripts": {
@@ -25,6 +25,7 @@
     "dependencies": {
         "@foobar404/wave": "^1.2.7",
         "electron": "^10.3.1",
-        "ini": "^2.0.0"
+        "ini": "^2.0.0",
+        "line-reader": "^0.4.0"
     }
 }

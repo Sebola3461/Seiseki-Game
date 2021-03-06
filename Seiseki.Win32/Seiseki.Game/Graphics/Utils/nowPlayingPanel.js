@@ -1,5 +1,5 @@
-const current_track = document.getElementById("music-track")
-const npTrackPosition = document.getElementById("track-progress")
+var current_track = document.getElementById("music-track")
+var npTrackPosition = document.getElementById("track-progress")
 
 function setNowPlayingInfo() {
     const panel_track_title = document.getElementById("now-playing-title")
@@ -32,7 +32,6 @@ function rapidShow() {
 function npBarUpdate() {
     setInterval(function() {
         npTrackPosition.style.width = `${calcTimebarSize()}%`
-        console.log("updating the track-position bar")
     }, 1000)
 }
 

@@ -1,8 +1,16 @@
 <div id="layout-modal" class="main-menu-content" onload="startAutoQueue(); startQueue();">
     <div id="menu-game-title">
-        <p id="menu-title-text">Seiseki</p>
+        <p id="menu-title-text" onclick="changeToSongSelection()" class="element2">Seiseki</p>
         <span id="menu-help-title">Click to play</span>
     </div>
-    <canvas id="audio-bars-visualizer"></canvas>
+    <div class="menu-options-wrapper">
+        <li>
+            <ul><p class="element2">Options</p></ul>
+            <ul><p class="element2">Songs</p></ul>
+            <ul onclick="changeToSongSelection()" class="element2"><p>Play</p></ul>
+            <ul class="element2"><p>Editor</p></ul>
+            <ul onclick="window.close()" class="element2"><p>Quit</p></ul>
+        </li>
+    </div>
 </div>
 </div>

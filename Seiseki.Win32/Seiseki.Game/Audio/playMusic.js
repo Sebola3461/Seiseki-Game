@@ -1,5 +1,6 @@
 var tracks = [];
 var currentTrack = 0;
+var {setNowPlayingInfo} = require('./../Graphics/Utils/nowPlayingPanel')
 const audio = document.getElementById("music-track")
 const audioVisualizers = require("../Graphics/AudioVisualizers")
 const beatmapsFolder = "D:/Seiseki/Songs";
@@ -9,12 +10,14 @@ function addToQueue(audio_src) {
     return tracks;
 }
 
-function startQueue() {
-    audio.src = tracks[0];
+async function startQueue() {
+    const first_track = tracks[Math.floor(Math.random() * tracks.length)];
+    audio.src = first_track;
+    currentTrack = tracks.indexOf(first_track);
+    updateNpData()
     audio.play()
-    currentTrack = 0;
     setNowPlayingInfo()
-    npBarUpdate()
+    require("./../Graphics/Utils/nowPlayingPanel").npBarUpdate()
 
     try {
         audioVisualizers.startDrawing()
@@ -31,6 +34,7 @@ function skipTrack() {
     audio.oncanplay = () => {
         audio.play()
     }
+    syncMenuEffects()
     updateNpData()
 }
 
@@ -51,9 +55,12 @@ function resumeTrack() {
     audio.play()
 }
 
-// * add the audio info for the audio tag
 audio.onended = () => {
-    skipTrack()
+    if (document.body.getAttribute("page") == "0") {
+        skipTrack()
+    } else {
+        audio.play();
+    }
 }
 
 function updateNpData() {
@@ -62,21 +69,20 @@ function updateNpData() {
     const all_beatmaps = readdirSync(beatmapsFolder, "utf-8")
 
     audio.setAttribute("index", currentTrack)
-    audio.setAttribute("music-data-archive", `${beatmapsFolder}/${all_beatmaps[currentTrack]}/data.ini`, "utf-8")
+    audio.setAttribute("music-data-archive", `${beatmapsFolder}/${all_beatmaps[currentTrack]}/data.ini`)
     audio.setAttribute("music-title", ini.parse(readFileSync(`${beatmapsFolder}/${all_beatmaps[currentTrack]}/data.ini`, "utf-8")).data.title)
     audio.setAttribute("music-artist", ini.parse(readFileSync(`${beatmapsFolder}/${all_beatmaps[currentTrack]}/data.ini`, "utf-8")).data.artist)
     audio.setAttribute("thumbnail", `${beatmapsFolder}/${all_beatmaps[currentTrack]}/` + ini.parse(readFileSync(`${beatmapsFolder}/${all_beatmaps[currentTrack]}/data.ini`, "utf-8")).data.thumbnail)
     setNowPlayingInfo()
 }
 
-function startAutoQueue() {
+async function startAutoQueue() {
     const ini = require("ini")
     const { readFileSync, readdirSync } = require("fs")
     const all_beatmaps = readdirSync(beatmapsFolder, "utf-8")
 
-    currentTrack = 0;
     audio.setAttribute("index", currentTrack)
-    audio.setAttribute("music-data-archive", `${beatmapsFolder}/${all_beatmaps[0]}/data.ini`, "utf-8")
+    audio.setAttribute("music-data-archive", `${beatmapsFolder}/${all_beatmaps[currentTrack]}/data.ini`)
     audio.setAttribute("music-title", ini.parse(readFileSync(`${beatmapsFolder}/${all_beatmaps[0]}/data.ini`, "utf-8")).data.title)
     audio.setAttribute("music-artist", ini.parse(readFileSync(`${beatmapsFolder}/${all_beatmaps[0]}/data.ini`, "utf-8")).data.artist)
     audio.setAttribute("thumbnail", `${beatmapsFolder}/${all_beatmaps[0]}/` + ini.parse(readFileSync(`${beatmapsFolder}/${all_beatmaps[0]}/data.ini`, "utf-8")).data.thumbnail)
