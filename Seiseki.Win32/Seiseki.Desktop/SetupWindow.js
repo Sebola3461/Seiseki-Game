@@ -26,7 +26,7 @@ function launch(resolutionW, resolutionH, fullscreen) {
     win.webContents.frameRate = 240;
 
     // * Load the main file and launch the window
-    win.loadFile(__dirname + "/../Seiseki.Game/Screens/Tests/test.html").then(() => {
+    win.loadFile(__dirname + "/../Seiseki.Game/Screens/MainMenu/content.html").then(() => {
         console.log(`${Date().slice(0,21)} - [Window Manager] Loaded the file MainMenu.html`);
     }).catch((e) => {
 
